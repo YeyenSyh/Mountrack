@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F9"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <!-- Header Section -->
+    <View
+        android:id="@+id/header_background"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:background="@drawable/gradient_splash_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dashboard_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="MountTrack"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dashboard_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="Petualangan Mendaki Anda Dimulai di Sini"
+        android:textColor="#E0E0E0"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dashboard_title" />
+
+    <!-- Fallback GPS Notice Banner -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_gps_warning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="#FFEBEB"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:strokeColor="#FFCDD2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dashboard_subtitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_dialog_alert"
+                app:tint="#D32F2F" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="GPS tidak aktif. Menggunakan lokasi default (Jakarta)."
+                android:textColor="#D32F2F"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Main Weather Display Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_weather"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_weather_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cuaca Lokasi Anda"
+                android:textColor="#757575"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_location_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Memuat lokasi..."
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_weather_label" />
+
+            <!-- Weather Icon -->
+            <ImageView
+                android:id="@+id/iv_weather_icon"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:contentDescription="Weather Icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/layout_weather_details"
+                tools:src="@drawable/ic_exploration" />
+
+            <!-- Temperature -->
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="--°"
+                android:textColor="#212121"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_location_name" />
+
+            <!-- Weather Condition Text -->
+            <TextView
+                android:id="@+id/tv_weather_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Memuat cuaca..."
+                android:textColor="#455A64"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_temperature"
+                app:layout_constraintStart_toEndOf="@id/tv_temperature"
+                app:layout_constraintTop_toTopOf="@id/tv_temperature"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <View
+                android:id="@+id/weather_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="#E0E0E0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_temperature" />
+
+            <!-- Weather details grid -->
+            <LinearLayout
+                android:id="@+id/layout_weather_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weather_divider">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kecepatan Angin"
+                        android:textColor="#757575"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_wind_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="-- km/h"
+                        android:textColor="#212121"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kelembaban"
+                        android:textColor="#757575"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="--%"
+                        android:textColor="#212121"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Quick Navigation Options -->
+    <TextView
+        android:id="@+id/tv_quick_menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Navigasi Cepat"
+        android:textColor="#212121"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_weather" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btn_quick_explore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="#2C5364"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_quick_menu_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_exploration"
+                app:tint="@color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eksplorasi Gunung"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Cari gunung dan pantau cuacanya sekarang"
+                    android:textColor="#B0BEC5"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_media_play"
+                app:tint="@color/white" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_quick_explore">
+
+        <!-- Calculator Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_quick_calculator"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_journal"
+                    app:tint="#203A43" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Kalkulator Biaya"
+                    android:textColor="#212121"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Checklist Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_quick_checklist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_dashboard"
+                    app:tint="#203A43" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Checklist Barang"
+                    android:textColor="#212121"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Loading State -->
+    <ProgressBar
+        android:id="@+id/progress_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/card_weather"
+        app:layout_constraintEnd_toEndOf="@id/card_weather"
+        app:layout_constraintStart_toStartOf="@id/card_weather"
+        app:layout_constraintTop_toTopOf="@id/card_weather" />
+
+    <!-- Error State Container -->
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:elevation="7dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/card_weather"
+        app:layout_constraintEnd_toEndOf="@id/card_weather"
+        app:layout_constraintStart_toStartOf="@id/card_weather"
+        app:layout_constraintTop_toTopOf="@id/card_weather">
+
+        <TextView
+            android:id="@+id/tv_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Gagal memuat cuaca. Cek koneksi internet Anda."
+            android:textColor="#D32F2F"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Coba Lagi"
+            app:backgroundTint="#2C5364" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

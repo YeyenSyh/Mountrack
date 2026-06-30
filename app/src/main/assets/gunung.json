@@ -1,0 +1,82 @@
+[
+  {
+    "nama": "Gunung Semeru",
+    "provinsi": "Jawa Timur",
+    "tinggi_mdpl": 3676,
+    "deskripsi": "Gunung Semeru atau Gunung Meru adalah sebuah gunung berapi kerucut di Jawa Timur, Indonesia. Gunung Semeru merupakan gunung tertinggi di Pulau Jawa, dengan puncaknya Mahameru, 3.676 meter dari permukaan laut (mdpl). Gunung ini terbentuk akibat subduksi Lempeng Indo-Australia kebawah Lempeng Eurasia.",
+    "latitude": -8.1077,
+    "longitude": 112.9220
+  },
+  {
+    "nama": "Gunung Rinjani",
+    "provinsi": "Nusa Tenggara Barat",
+    "tinggi_mdpl": 3726,
+    "deskripsi": "Gunung Rinjani adalah gunung berapi aktif kedua tertinggi di Indonesia dengan ketinggian 3.726 mdpl. Gunung ini terletak di Pulau Lombok, Nusa Tenggara Barat. Rinjani terkenal dengan Danau Segara Anak di kalderanya yang sangat indah dan menjadi destinasi favorit pendaki dunia.",
+    "latitude": -8.4111,
+    "longitude": 116.4578
+  },
+  {
+    "nama": "Gunung Gede",
+    "provinsi": "Jawa Barat",
+    "tinggi_mdpl": 2958,
+    "deskripsi": "Gunung Gede merupakan sebuah gunung api bertipe stratovolcano yang terletak di Pulau Jawa, Indonesia. Gunung Gede berada dalam ruang lingkup Taman Nasional Gunung Gede Pangrango, yang merupakan salah satu dari lima taman nasional pertama di Indonesia. Sangat populer bagi pendaki pemula karena jalurnya yang tertata.",
+    "latitude": -6.7917,
+    "longitude": 106.9792
+  },
+  {
+    "nama": "Gunung Merbabu",
+    "provinsi": "Jawa Tengah",
+    "tinggi_mdpl": 3142,
+    "deskripsi": "Gunung Merbabu adalah gunung api yang terletak di Jawa Tengah. Gunung ini cukup populer sebagai ajang pendakian karena pemandangan sabananya yang sangat luas dan indah. Puncak tertinggi Merbabu adalah Puncak Kenteng Songo setinggi 3.142 mdpl.",
+    "latitude": -7.4522,
+    "longitude": 110.4394
+  },
+  {
+    "nama": "Gunung Prau",
+    "provinsi": "Jawa Tengah",
+    "tinggi_mdpl": 2565,
+    "deskripsi": "Gunung Prau terletak di kawasan Dataran Tinggi Dieng, Jawa Tengah. Gunung Prau memiliki ketinggian 2.565 mdpl dan dikenal memiliki puncak berupa padang rumput luas yang memanjang. Terkenal dengan pemandangan matahari terbit (golden sunrise) yang menakjubkan.",
+    "latitude": -7.1833,
+    "longitude": 109.9167
+  },
+  {
+    "nama": "Gunung Kerinci",
+    "provinsi": "Jambi",
+    "tinggi_mdpl": 3805,
+    "deskripsi": "Gunung Kerinci adalah gunung tertinggi di Sumatra, gunung berapi tertinggi di Indonesia, dan puncak tertinggi di Indonesia di luar Papua. Gunung Kerinci terletak di Provinsi Jambi dan dikelilingi oleh hutan lebat Taman Nasional Kerinci Seblat yang menjadi habitat harimau dan badak Sumatra.",
+    "latitude": -1.6969,
+    "longitude": 101.2644
+  },
+  {
+    "nama": "Gunung Batur",
+    "provinsi": "Bali",
+    "tinggi_mdpl": 1717,
+    "deskripsi": "Gunung Batur adalah gunung berapi aktif di Kecamatan Kintamani, Kabupaten Bangli, Bali, Indonesia. Gunung ini terletak di barat laut Gunung Agung. Gunung ini memiliki kaldera yang sangat besar dan indah dengan Danau Batur di dalamnya, sering dijadikan tempat mendaki pagi hari untuk mengejar sunrise.",
+    "latitude": -8.2416,
+    "longitude": 115.3755
+  },
+  {
+    "nama": "Gunung Sindoro",
+    "provinsi": "Jawa Tengah",
+    "tinggi_mdpl": 3136,
+    "deskripsi": "Gunung Sindoro adalah gunung volkano aktif yang terletak di Jawa Tengah, berdekatan dengan Gunung Sumbing. Gunung ini memiliki kawah aktif yang luas di puncaknya dengan pemandangan hamparan bunga edelweis yang menawan.",
+    "latitude": -7.3000,
+    "longitude": 109.9986
+  },
+  {
+    "nama": "Gunung Sumbing",
+    "provinsi": "Jawa Tengah",
+    "tinggi_mdpl": 3371,
+    "deskripsi": "Gunung Sumbing merupakan gunung tertinggi ketiga di Pulau Jawa setelah Semeru dan Slamet. Terletak berhadapan langsung dengan Gunung Sindoro, gunung ini menawarkan petualangan mendaki yang menantang dengan jalur trek yang cukup terjal.",
+    "latitude": -7.3839,
+    "longitude": 110.0717
+  },
+  {
+    "nama": "Gunung Ijen",
+    "provinsi": "Jawa Timur",
+    "tinggi_mdpl": 2443,
+    "deskripsi": "Gunung Ijen adalah sebuah gunung berapi yang terletak di perbatasan Kabupaten Banyuwangi dan Kabupaten Bondowoso, Jawa Timur. Gunung ini terkenal karena kawah asamnya yang berwarna toska dan fenomena api biru (blue fire) yang mendunia, hasil pembakaran gas belerang.",
+    "latitude": -8.058,
+    "longitude": 114.242
+  }
+]

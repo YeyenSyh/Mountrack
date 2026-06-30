@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F9"
+    tools:context=".ui.detail.DetailFragment">
+
+    <!-- Header / Toolbar section -->
+    <View
+        android:id="@+id/detail_header_background"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@drawable/gradient_splash_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Kembali"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_detail_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Nama Gunung"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/layout_detail_actions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_header_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Elevation & Location Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tv_detail_province"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Provinsi"
+                    android:textColor="#546E7A"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_detail_elevation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_elevation_badge"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="3726 MDPL"
+                    android:textColor="#203A43"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_detail_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="20dp"
+                android:lineSpacingExtra="4dp"
+                android:text="Memuat deskripsi..."
+                android:textColor="#455A64"
+                android:textSize="14sp" />
+
+            <!-- Weather Section Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cuaca Real-Time Puncak"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Weather Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_detail_weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ProgressBar
+                        android:id="@+id/progress_detail_weather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- Weather Info Group (Hidden while loading) -->
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/group_weather_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:constraint_referenced_ids="iv_detail_weather_icon,tv_detail_temperature,tv_detail_condition,detail_weather_divider,layout_detail_weather_grid" />
+
+                    <!-- Icon -->
+                    <ImageView
+                        android:id="@+id/iv_detail_weather_icon"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_exploration" />
+
+                    <!-- Temp -->
+                    <TextView
+                        android:id="@+id/tv_detail_temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="--°C"
+                        android:textColor="#212121"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_detail_weather_icon"
+                        app:layout_constraintStart_toEndOf="@id/iv_detail_weather_icon"
+                        app:layout_constraintTop_toTopOf="@id/iv_detail_weather_icon" />
+
+                    <!-- Condition -->
+                    <TextView
+                        android:id="@+id/tv_detail_condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Memuat..."
+                        android:textColor="#546E7A"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_detail_temperature"
+                        app:layout_constraintStart_toEndOf="@id/tv_detail_temperature"
+                        app:layout_constraintTop_toTopOf="@id/tv_detail_temperature" />
+
+                    <View
+                        android:id="@+id/detail_weather_divider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="12dp"
+                        android:background="#E0E0E0"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/iv_detail_weather_icon" />
+
+                    <!-- Grid Info -->
+                    <LinearLayout
+                        android:id="@+id/layout_detail_weather_grid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/detail_weather_divider">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kecepatan Angin"
+                                android:textColor="#757575"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_wind"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="-- km/h"
+                                android:textColor="#212121"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Kelembaban"
+                                android:textColor="#757575"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_detail_humidity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="--%"
+                                android:textColor="#212121"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Error Inner State -->
+                    <LinearLayout
+                        android:id="@+id/layout_detail_weather_error"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_detail_error_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gagal memuat cuaca."
+                            android:textColor="#D32F2F"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/btn_detail_retry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginTop="6dp"
+                            android:paddingVertical="0dp"
+                            android:text="Retry"
+                            android:textSize="11sp"
+                            app:backgroundTint="#2C5364" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Actions Menu bar -->
+    <LinearLayout
+        android:id="@+id/layout_detail_actions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_forecast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:text="Cuaca Harian"
+            android:textSize="11sp"
+            app:backgroundTint="#203A43"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btn_map"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:text="Peta Basecamp"
+            android:textSize="11sp"
+            app:backgroundTint="#2C5364"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btn_add_to_journal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:layout_marginStart="4dp"
+            android:text="Ke Jurnal"
+            android:textSize="11sp"
+            app:backgroundTint="#FF9F43"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

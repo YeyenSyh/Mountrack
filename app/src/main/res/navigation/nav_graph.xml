@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_dashboard">
+
+    <!-- 4 Halaman Utama (Bottom Navigation) -->
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.mounttrack.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_exploration"
+            app:destination="@id/navigation_exploration" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_exploration"
+        android:name="com.example.mounttrack.ui.exploration.ExplorationFragment"
+        android:label="Eksplorasi Gunung"
+        tools:layout="@layout/fragment_exploration">
+        <action
+            android:id="@+id/action_exploration_to_detail"
+            app:destination="@id/navigation_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_journal"
+        android:name="com.example.mounttrack.ui.journal.JournalFragment"
+        android:label="Jurnal Pendakian"
+        tools:layout="@layout/fragment_journal">
+        <action
+            android:id="@+id/action_journal_to_addJournal"
+            app:destination="@id/navigation_add_journal" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.mounttrack.ui.profile.ProfileFragment"
+        android:label="Profil Pendaki"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
+
+    <!-- Halaman Turunan (Sub-pages) -->
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="com.example.mounttrack.ui.detail.DetailFragment"
+        android:label="Detail Gunung"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="mountain"
+            app:argType="com.example.mounttrack.data.model.Mountain" />
+        <action
+            android:id="@+id/action_detail_to_forecast"
+            app:destination="@id/navigation_forecast" />
+        <action
+            android:id="@+id/action_detail_to_map"
+            app:destination="@id/navigation_map" />
+        <action
+            android:id="@+id/action_detail_to_addJournal"
+            app:destination="@id/navigation_add_journal" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_forecast"
+        android:name="com.example.mounttrack.ui.forecast.ForecastFragment"
+        android:label="Prakiraan Cuaca"
+        tools:layout="@layout/fragment_forecast">
+        <argument
+            android:name="mountain"
+            app:argType="com.example.mounttrack.data.model.Mountain" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.example.mounttrack.ui.map.MapFragment"
+        android:label="Lokasi Basecamp"
+        tools:layout="@layout/fragment_map">
+        <argument
+            android:name="mountain"
+            app:argType="com.example.mounttrack.data.model.Mountain" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_calculator"
+        android:name="com.example.mounttrack.ui.calculator.CalculatorFragment"
+        android:label="Kalkulator Logistik"
+        tools:layout="@layout/fragment_calculator" />
+
+    <fragment
+        android:id="@+id/navigation_checklist"
+        android:name="com.example.mounttrack.ui.checklist.ChecklistFragment"
+        android:label="Checklist Perlengkapan"
+        tools:layout="@layout/fragment_checklist" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.mounttrack.ui.settings.SettingsFragment"
+        android:label="Pengaturan"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_add_journal"
+        android:name="com.example.mounttrack.ui.journal.AddJournalFragment"
+        android:label="Tambah Jurnal"
+        tools:layout="@layout/fragment_add_journal">
+        <!-- Optional argument for mountain prefill -->
+        <argument
+            android:name="mountainName"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

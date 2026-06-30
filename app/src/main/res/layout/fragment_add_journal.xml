@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://tools.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F9"
+    tools:context=".ui.journal.AddJournalFragment">
+
+    <!-- Header / Toolbar -->
+    <View
+        android:id="@+id/add_journal_header_background"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@drawable/gradient_splash_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_add_journal_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Kembali"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_add_journal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah Jurnal Baru"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_add_journal_back"
+        app:layout_constraintStart_toEndOf="@id/btn_add_journal_back"
+        app:layout_constraintTop_toTopOf="@id/btn_add_journal_back" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_journal_header_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Mountain Name Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_add_mountain"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Nama Gunung">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_add_mountain_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Date Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_add_date"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Tanggal Pendakian">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_add_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Impressions / Notes Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_add_notes"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:hint="Kesan &amp; Catatan Pendakian">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_add_notes"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:gravity="top|start"
+                            android:inputType="textMultiLine"
+                            android:maxLines="5" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Save Button -->
+                    <Button
+                        android:id="@+id/btn_save_journal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Simpan ke Jurnal"
+                        app:backgroundTint="#2C5364" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

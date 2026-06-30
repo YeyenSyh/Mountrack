@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F9"
+    tools:context=".ui.calculator.CalculatorFragment">
+
+    <!-- Header / Toolbar -->
+    <View
+        android:id="@+id/calc_header_background"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@drawable/gradient_splash_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_calc_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Kembali"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_calc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kalkulator Logistik &amp; Biaya"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_calc_back"
+        app:layout_constraintStart_toEndOf="@id/btn_calc_back"
+        app:layout_constraintTop_toTopOf="@id/btn_calc_back" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calc_header_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Input Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Rencana Pendakian"
+                        android:textColor="#212121"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Input Jumlah Personil -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_layout_personnel"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Jumlah Anggota / Personil (Orang)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_personnel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Input Jumlah Hari -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_layout_days"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Durasi Pendakian (Hari)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_days"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Calculate Button -->
+                    <Button
+                        android:id="@+id/btn_calculate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hitung Estimasi Biaya"
+                        app:backgroundTint="#2C5364" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Results Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_calc_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Breakdown Estimasi Biaya"
+                        android:textColor="#212121"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Simaksi Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1. Tiket Simaksi (Rp25rb/org/hari)"
+                            android:textColor="#757575" />
+
+                        <TextView
+                            android:id="@+id/tv_result_simaksi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0"
+                            android:textColor="#212121"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Transport Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="2. Transportasi &amp; Bensin (Rp50rb/org)"
+                            android:textColor="#757575" />
+
+                        <TextView
+                            android:id="@+id/tv_result_transport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0"
+                            android:textColor="#212121"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Logistics Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="3. Logistik Konsumsi (Rp40rb/org/hari)"
+                            android:textColor="#757575" />
+
+                        <TextView
+                            android:id="@+id/tv_result_logistics"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0"
+                            android:textColor="#212121"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="12dp"
+                        android:background="#E0E0E0" />
+
+                    <!-- Total Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total Estimasi"
+                            android:textColor="#212121"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_result_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0"
+                            android:textColor="#E65100"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

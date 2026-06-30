@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F9"
+    tools:context=".ui.forecast.ForecastFragment">
+
+    <!-- Header / Toolbar section -->
+    <View
+        android:id="@+id/forecast_header_background"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:background="@drawable/gradient_splash_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_forecast_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Kembali"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_forecast_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prakiraan Cuaca"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_forecast_back"
+        app:layout_constraintStart_toEndOf="@id/btn_forecast_back"
+        app:layout_constraintTop_toTopOf="@id/btn_forecast_back" />
+
+    <TextView
+        android:id="@+id/tv_forecast_mountain_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Nama Gunung"
+        android:textColor="#203A43"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forecast_header_background" />
+
+    <TextView
+        android:id="@+id/tv_forecast_duration_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:text="Prakiraan cuaca harian untuk 7 hari ke depan"
+        android:textColor="#757575"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_forecast_mountain_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_forecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_forecast_duration_info"
+        tools:listitem="@layout/item_forecast" />
+
+    <ProgressBar
+        android:id="@+id/progress_forecast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forecast_header_background" />
+
+    <LinearLayout
+        android:id="@+id/layout_forecast_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forecast_header_background">
+
+        <TextView
+            android:id="@+id/tv_forecast_error_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gagal memuat prakiraan cuaca."
+            android:textColor="#D32F2F" />
+
+        <Button
+            android:id="@+id/btn_forecast_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Coba Lagi"
+            app:backgroundTint="#2C5364" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

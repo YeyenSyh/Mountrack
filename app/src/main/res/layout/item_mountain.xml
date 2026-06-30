@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Terrain Image/Icon representation -->
+        <ImageView
+            android:id="@+id/iv_mountain_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_exploration"
+            app:tint="#2C5364"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Mountain Name -->
+        <TextView
+            android:id="@+id/tv_mountain_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Gunung Semeru"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/layout_elevation_badge"
+            app:layout_constraintStart_toEndOf="@id/iv_mountain_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Province Location -->
+        <TextView
+            android:id="@+id/tv_mountain_province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:text="Jawa Timur"
+            android:textColor="#757575"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/layout_elevation_badge"
+            app:layout_constraintStart_toEndOf="@id/iv_mountain_icon"
+            app:layout_constraintTop_toBottomOf="@id/tv_mountain_name" />
+
+        <!-- Elevation Badge -->
+        <LinearLayout
+            android:id="@+id/layout_elevation_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_elevation_badge"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_mountain_elevation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3676 MDPL"
+                android:textColor="#203A43"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

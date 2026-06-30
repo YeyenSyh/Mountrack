@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Day Name -->
+        <TextView
+            android:id="@+id/tv_forecast_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hari Ini"
+            android:textColor="#212121"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Date String -->
+        <TextView
+            android:id="@+id/tv_forecast_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="30 Jun 2026"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_forecast_day" />
+
+        <!-- Weather Icon -->
+        <ImageView
+            android:id="@+id/iv_forecast_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/layout_forecast_temp_box"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_exploration" />
+
+        <!-- Temperature Range -->
+        <LinearLayout
+            android:id="@+id/layout_forecast_temp_box"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_forecast_temp_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25° - 31°"
+                android:textColor="#212121"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_forecast_rain_chance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Hujan: 10%"
+                android:textColor="#1976D2"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Recommendation Badge -->
+        <TextView
+            android:id="@+id/tv_recommendation_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_recommendation_badge"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="Sangat Direkomendasikan"
+            android:textColor="#2E7D32"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_forecast_date"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
