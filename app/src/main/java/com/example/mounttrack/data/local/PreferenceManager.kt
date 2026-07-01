@@ -18,6 +18,9 @@ class PreferenceManager(context: Context) {
         private const val KEY_USER_NAME = "user_name"
         private const val KEY_USER_AVATAR = "user_avatar"
         private const val KEY_CHECKED_GEARS = "checked_gears"
+        private const val KEY_USER_EMAIL = "user_email"
+        private const val KEY_USER_PASSWORD = "user_password"
+        private const val KEY_IS_LOGGED_IN = "is_logged_in"
     }
 
     // --- Pengaturan Satuan Suhu ---
@@ -38,6 +41,18 @@ class PreferenceManager(context: Context) {
     var userAvatar: String
         get() = prefs.getString(KEY_USER_AVATAR, "") ?: ""
         set(value) = prefs.edit().putString(KEY_USER_AVATAR, value).apply()
+
+    var userEmail: String
+        get() = prefs.getString(KEY_USER_EMAIL, "") ?: ""
+        set(value) = prefs.edit().putString(KEY_USER_EMAIL, value).apply()
+
+    var userPassword: String
+        get() = prefs.getString(KEY_USER_PASSWORD, "") ?: ""
+        set(value) = prefs.edit().putString(KEY_USER_PASSWORD, value).apply()
+
+    var isLoggedIn: Boolean
+        get() = prefs.getBoolean(KEY_IS_LOGGED_IN, false)
+        set(value) = prefs.edit().putBoolean(KEY_IS_LOGGED_IN, value).apply()
 
     // --- Checklist Perlengkapan ---
     fun getCheckedGears(): Set<String> {

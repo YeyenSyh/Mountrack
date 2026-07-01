@@ -82,6 +82,22 @@
                         android:textStyle="bold"
                         android:layout_marginBottom="12dp" />
 
+                    <!-- Input Pilih Gunung -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_layout_mountain"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="Pilih Gunung Tujuan">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/et_mountain"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <!-- Input Jumlah Personil -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/input_layout_personnel"
@@ -214,6 +230,54 @@
 
                         <TextView
                             android:id="@+id/tv_result_logistics"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0"
+                            android:textColor="#212121"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Parking Row -->
+                    <LinearLayout
+                        android:id="@+id/row_parking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="4. Retribusi Parkir"
+                            android:textColor="#757575" />
+
+                        <TextView
+                            android:id="@+id/tv_result_parking"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp0"
+                            android:textColor="#212121"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Water Row -->
+                    <LinearLayout
+                        android:id="@+id/row_water"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="5. Air Minum Tambahan"
+                            android:textColor="#757575" />
+
+                        <TextView
+                            android:id="@+id/tv_result_water"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rp0"

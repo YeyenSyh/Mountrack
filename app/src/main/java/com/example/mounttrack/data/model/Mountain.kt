@@ -12,5 +12,8 @@ data class Mountain(
     val tinggi_mdpl: Int,
     val deskripsi: String,
     val latitude: Double,
-    val longitude: Double
+    val longitude: Double,
+    val simaksi_per_hari: Int = 0,
+    val tarif_parkir: Int = 0,
+    val sumber_air_tersedia: Boolean = false
 ) : Serializable

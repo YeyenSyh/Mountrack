@@ -105,6 +105,22 @@ class ProfileFragment : Fragment() {
         binding.btnSettings.setOnClickListener {
             findNavController().navigate(R.id.action_profile_to_settings)
         }
+        
+        // Tombol Logout
+        binding.btnLogout.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Konfirmasi Logout")
+            builder.setMessage("Apakah Anda yakin ingin keluar?")
+            builder.setPositiveButton("Ya") { _, _ ->
+                preferenceManager.isLoggedIn = false
+                val intent = android.content.Intent(requireContext(), com.example.mounttrack.ui.auth.LoginActivity::class.java)
+                intent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                requireActivity().finish()
+            }
+            builder.setNegativeButton("Batal", null)
+            builder.show()
+        }
     }
 
     private fun showEditNameDialog() {

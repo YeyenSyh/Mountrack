@@ -28,6 +28,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+
         <!-- Halaman Utama (Dashboard, Eksplorasi, Jurnal, Profil) -->
         <activity
             android:name=".ui.MainActivity"

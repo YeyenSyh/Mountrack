@@ -145,16 +145,19 @@ class SplashActivity : AppCompatActivity() {
     }
 
     /**
-     * Mengirim data lokasi ke MainActivity dan memulai activity baru.
+     * Mengirim data lokasi ke MainActivity (atau LoginActivity) dan memulai activity baru.
      */
     private fun navigateToMain(lat: Double, lon: Double, isFallback: Boolean) {
-        // Membuat objek Intent baru untuk memulai MainActivity dari SplashActivity
-        val intent = Intent(this, MainActivity::class.java).apply {
+        val prefs = com.example.mounttrack.data.local.PreferenceManager(this)
+        val targetClass = if (prefs.isLoggedIn) MainActivity::class.java else com.example.mounttrack.ui.auth.LoginActivity::class.java
+        
+        // Membuat objek Intent baru untuk memulai Activity dari SplashActivity
+        val intent = Intent(this, targetClass).apply {
             putExtra("EXTRA_LAT", lat) // Menyisipkan data latitude (garis lintang)
             putExtra("EXTRA_LON", lon) // Menyisipkan data longitude (garis bujur)
             putExtra("EXTRA_IS_FALLBACK", isFallback) // Menyisipkan data status fallback lokasi
         }
-        startActivity(intent) // Memulai target activity baru (MainActivity)
+        startActivity(intent) // Memulai target activity baru
         finish() // Menutup SplashActivity agar tidak bisa kembali saat menekan tombol back
     }
 }
